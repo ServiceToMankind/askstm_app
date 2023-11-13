@@ -1,5 +1,5 @@
+import 'package:askstm/screens/coming_soon.dart';
 import 'package:askstm/screens/complaints.dart';
-import 'package:askstm/screens/home.dart';
 
 class Category {
   final String name;
@@ -26,11 +26,11 @@ var categoriesData = [
   {
     "name": "Blood Requests",
     'image': "assets/images/blood.png",
-    'route': const HomeScreen()
+    'route': const ComingSoon()
   },
   {
     "name": "Other Requests",
     'image': "assets/images/others.png",
-    'route': const ComplaintsScreen()
+    'route': const ComingSoon()
   },
 ];

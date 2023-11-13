@@ -1,3 +1,4 @@
+import 'package:askstm/screens/coming_soon.dart';
 import 'package:flutter/material.dart';
 import 'package:askstm/screens/home.dart';
 import 'package:askstm/screens/splash.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const Splash(),
         '/home': (context) => const HomeScreen(),
+        '/coming_soon': (context) => const ComingSoon(),
       },
     );
   }
