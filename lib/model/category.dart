@@ -26,7 +26,7 @@ var categoriesData = [
   {
     "name": "Blood Requests",
     'image': "assets/images/blood.png",
-    'route': const Home()
+    'route': const HomeScreen()
   },
   {
     "name": "Other Requests",
