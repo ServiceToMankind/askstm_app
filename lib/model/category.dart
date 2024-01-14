@@ -21,7 +21,8 @@ List<Category> categories = categoriesData
 var categoriesData = [
   {
     "name": "Complaints",
-    'route': (BuildContext context) => const ComplaintsScreen(), // WidgetBuilder
-    'image': "assets/images/marketing.png"
+    'route': (BuildContext context) =>
+        const ComplaintsScreen(), // WidgetBuilder
+    'image': "lib/images/complaints.png"
   },
 ];
