@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:askstm/screens/splash.dart';
-import 'package:askstm/screens/home.dart';
-import 'package:askstm/screens/complaints.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'screens/splash.dart';
+import 'screens/home.dart';
+import 'screens/complaints.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool hasAcceptedPrivacyPolicy =
+      prefs.getBool('hasAcceptedPrivacyPolicy') ?? false;
+
+  runApp(MyApp(hasAcceptedPrivacyPolicy: hasAcceptedPrivacyPolicy));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool hasAcceptedPrivacyPolicy;
 
-  // This widget is the root of your application.
+  const MyApp({Key? key, required this.hasAcceptedPrivacyPolicy})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,10 +30,21 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const Splash(),
+        '/': (context) => Splash(
+              onPrivacyPolicyAccepted: () {
+                onPrivacyPolicyAccepted(context);
+              },
+            ),
         '/home': (context) => const HomeScreen(),
         '/ComplaintsScreen': (context) => const ComplaintsScreen(),
       },
     );
+  }
+
+  void onPrivacyPolicyAccepted(BuildContext context) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('hasAcceptedPrivacyPolicy', true);
+
+    Navigator.pushReplacementNamed(context, '/home');
   }
 }
