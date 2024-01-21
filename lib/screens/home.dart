@@ -36,7 +36,8 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                SvgPicture.asset("assets/icons/menu.svg"),
+                // SvgPicture.asset("assets/icons/menu.svg"),
+                Image.asset("assets/images/logo.png", height: 35),
                 Image.asset("assets/images/logo.png", height: 35),
               ],
             ),
@@ -102,6 +103,7 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       height: index.isEven ? 200 : 240,
+                      // constraints: const BoxConstraints(maxWidth: 150),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
                         image: DecorationImage(
